@@ -1,0 +1,39 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // write your code here
+        Scanner Cash = new Scanner(System.in);
+        Float change = 0f;
+        do {
+            System.out.println("How much change do you need?");
+            change = Cash.nextFloat();
+
+        } while (change < 0);
+
+        int cents = Math.round(change * 100);
+
+        int remaining_cents = 0;
+
+        if (cents >= 25) {
+            int quarters = (cents / 25);
+            remaining_cents = (cents - (quarters * 25));
+            if (remaining_cents >= 10) {
+                int dimes = (remaining_cents / 10);
+                remaining_cents = (remaining_cents - (dimes * 10));
+                if (remaining_cents >= 5) {
+                    int nickels = (remaining_cents / 5);
+                    remaining_cents = (remaining_cents - (nickels * 5));
+                    if (remaining_cents >= 1) {
+                        int pennies = (remaining_cents);
+                        System.out.print("Change owed:" );
+                        System.out.print( quarters + dimes + nickels + pennies);
+                    }
+                }
+            }
+        }
+    }
+}
